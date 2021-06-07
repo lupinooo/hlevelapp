@@ -1,15 +1,14 @@
-import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { MainStackNavigator } from './navigation/Navigators';
 
-class App extends React.Component {
+class Reward extends React.Component {
   render(){
     return (
-      <NavigationContainer>
-        <MainStackNavigator/>
-      </NavigationContainer>
+      <View style={styles.container}>
+        <Text>Reward Screen</Text>
+        <StatusBar style="auto" />
+      </View>
     );
   }
  
@@ -24,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Reward;
