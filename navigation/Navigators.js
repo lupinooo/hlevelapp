@@ -21,7 +21,7 @@ const MainStackNavigator = () => {
             headerShown: false
           }}>
          <Stack.Screen
-           name="H Level"
+           name="Login"
            component={LoginScreen}
          />
          <Stack.Screen
