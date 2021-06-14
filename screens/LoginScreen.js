@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View, TextInput, Image, TouchableOpacity} from 'react-native';
+import { Text, View, TextInput, Image, TouchableOpacity, ScrollView, SafeAreaView} from 'react-native';
 import Icon from '@expo/vector-icons/AntDesign';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
@@ -7,20 +7,23 @@ class Login extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      secure: true
+      secureTextEntry: true
     }
 
   }
 
   changePassword (){
-    if (this.state.secure==true){
-    this.setState({secure:false})}
-    else {this.setState({secure:true})}
+    if (this.state.secureTextEntry==true){
+    this.setState({secureTextEntry:false})}
+    else {this.setState({secureTextEntry:true})}
     }
+
   render () {
 
   return (
-    <View style={{backgroundColor:'#F7FFF6',height:'100%'}}>
+    
+    <SafeAreaView>
+    <ScrollView style={{backgroundColor:'#F7FFF6',height:'100%'}}>
   
     <View>
       <Image source ={require('../assets/logo-cerc.png')}
@@ -28,7 +31,7 @@ class Login extends React.Component {
           width:85,
           height:85,
           alignSelf: 'center',
-          marginTop: 65,
+          marginTop: 70,
         }}
       />
     </View>
@@ -95,9 +98,10 @@ class Login extends React.Component {
              
             <TextInput
              placeholder="password"
-             secureTextEntry={this.state.secure}
+             secureTextEntry={this.state.secureTextEntry}
              style={{
              paddingLeft: 10,
+             flex: 1
                    }}
             />
             <TouchableOpacity 
@@ -107,12 +111,11 @@ class Login extends React.Component {
             >
 
                    <MaterialCommunityIcons 
-                    name={this.state.secure==true ? 'eye-outline' : 'eye-off-outline'}
+                    name={this.state.secureTextEntry==true ? 'eye-outline' : 'eye-off-outline'}
                     color="#46505D"
                      size={23} 
                    
                     style={{
-                      paddingLeft: 110,
                       opacity: 0.8,
                     }}/>
 
@@ -129,8 +132,7 @@ class Login extends React.Component {
           backgroundColor: '#2A8D4A',
           paddingVertical: 12,
           borderRadius: 23,
-        }}>
-          <TouchableOpacity onPress={()=>this.props.navigation.navigate('App')}>
+        }}><TouchableOpacity onPress={()=>this.props.navigation.navigate('App')}>
             <Text style={{
               color: '#F7FFF6',
               alignSelf: 'center',
@@ -174,8 +176,9 @@ class Login extends React.Component {
             >Create an account</Text>
             </TouchableOpacity>
             </View>
-    </View>
+    </ScrollView>
 
+    </SafeAreaView>
 
   );}
 }

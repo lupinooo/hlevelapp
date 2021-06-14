@@ -1,14 +1,37 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View, TextInput, Image, TouchableOpacity} from 'react-native';
+import { Text, View, TextInput, Image, TouchableOpacity, ScrollView, SafeAreaView} from 'react-native';
 import Icon from '@expo/vector-icons/AntDesign';
-// import {MaterialCommunityIcons} from '@expo/vector-icons';
+import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 class Register extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      secureTextEntry: true,
+      secure: true
+    }
+  }
+
+  changePassword (){
+    if (this.state.secureTextEntry==true){
+    this.setState({secureTextEntry:false})}
+    else {this.setState({secureTextEntry:true})}
+    }
+
+    changePassword2 (){
+      if (this.state.secure==true){
+      this.setState({secure:false})}
+      else {this.setState({secure:true})}
+      }
 
   render () {
 
   return (
-    <View style={{backgroundColor:'#F7FFF6',height:'100%'}}>
+    
+    <SafeAreaView>
+    
+    <ScrollView style={{backgroundColor:'#F7FFF6',height:'100%'}}>
   
     <View>
       <Image source ={require('../assets/logo-cerc.png')}
@@ -140,11 +163,30 @@ class Register extends React.Component {
              
             <TextInput
              placeholder="password"
+             secureTextEntry={this.state.secure}
              style={{
               paddingLeft: 10,
+              flex: 1
              }}
             />
            
+           <TouchableOpacity 
+            onPress = {
+              () => this.changePassword2()
+            }
+            >
+
+                   <MaterialCommunityIcons
+                    name = {this.state.secure==true ? "eye-outline" : "eye-off-outline"}
+                    color="#46505D"
+                     size={23} 
+                   
+                    style={{
+                      opacity: 0.8,
+                    }}/>
+
+            </TouchableOpacity>
+
         </View> 
 
         <View style={{
@@ -164,11 +206,30 @@ class Register extends React.Component {
              
             <TextInput
              placeholder="confirm password"
+             secureTextEntry={this.state.secureTextEntry}
              style={{
               paddingLeft: 10,
+              flex: 1
              }}
             />
            
+           <TouchableOpacity 
+            onPress = {
+              () => this.changePassword()
+            }
+            >
+
+                   <MaterialCommunityIcons 
+                    name={this.state.secureTextEntry==true ? 'eye-outline' : 'eye-off-outline'}
+                    color="#46505D"
+                     size={23} 
+                   
+                    style={{
+                      opacity: 0.8,
+                    }}/>
+
+            </TouchableOpacity>
+
         </View> 
         
   {/* REGISTER */}
@@ -221,8 +282,8 @@ class Register extends React.Component {
             >Login</Text>
             </TouchableOpacity>
             </View>
-    </View>
-
+    </ScrollView>
+    </SafeAreaView>
 
   );}
 }
