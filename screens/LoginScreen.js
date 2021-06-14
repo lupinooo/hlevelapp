@@ -130,12 +130,13 @@ class Login extends React.Component {
           paddingVertical: 12,
           borderRadius: 23,
         }}>
+          <TouchableOpacity onPress={()=>this.props.navigation.navigate('App')}>
             <Text style={{
               color: '#F7FFF6',
               alignSelf: 'center',
               fontSize: 17,
             }}
-            >Login</Text>
+            >Login</Text></TouchableOpacity>
         </View>
         
 
