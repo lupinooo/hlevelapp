@@ -1,52 +1,95 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, SafeAreaView, ScrollView, ImageBackground, Image, Dimensions } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, FlatList, SafeAreaView, ScrollView, ImageBackground, Image, Dimensions, TouchableOpacity } from 'react-native';
+import Modal from "react-native-simple-modal";
 
-export default function Reward() {
-  const [rewards, setRewards] = useState([
-    { name: 'Unlock 3 tasks from the "Nature" category', image: require('../assets/nature.png'), price: '20 points', id: '1' },
-    { name: 'Buy some vegetables seeds', price: '30 points', image: require('../assets/seeds.jpg'), id: '2' },
-    { name: 'Buy a cup with  the "HLevel" logo', price: '45 points', image: require('../assets/nature.jpg'), id: '3' },
-    { name: 'Buy the 4ocean Bracelet', price: '85 points', image: require('../assets/bracelet.png'), id: '4' },
-    { name: 'Buy a T-shirt with the "HLevel" logo', price: '50 points', image: require('../assets/nature.jpg'), id: '5' },
-    { name: 'Get a free session with a nutritionist', price: '120 points', image: require('../assets/nature.jpg'), id: '6' },
-    { name: '30% discount on Mega Image', price: '80 points', image: require('../assets/nature.jpg'), id: '7' },
-    { name: 'Donate for children s food from Africa', price: '30 points', image: require('../assets/nature.jpg'), id: '8' },
-    { name: 'Custom picture frame', price: '30 points', image: require('../assets/nature.jpg'), id: '9' }
-  ]);
+const Rewards = [
+  { name: 'Unlock 3 tasks from the "Nature" category', image: require('../assets/nature.png'), price:20, id: '1' },
+  { name: 'Buy some vegetables seeds', price: 30, image: require('../assets/sprout.png'), id: '2' },
+  { name: 'Buy a cup with  the "HLevel" logo', price: 45, image: require('../assets/cup.png'), id: '3' },
+  { name: 'Buy the 4ocean Bracelet', price: 85, image: require('../assets/1.png'), id: '4' },
+  { name: 'Buy a T-shirt with the "HLevel" logo', price: 50, image: require('../assets/Imagine.png'), id: '5' },
+  { name: 'Get a free session with a nutritionist', price: 120, image: require('../assets/nutrition.png'), id: '6' },
+  { name: '30% discount on Mega Image', price: 80, image: require('../assets/mega_image.png'), id: '7' },
+  { name: "Donate for children's food from Africa", price: 30, image: require('../assets/food.jpg'), id: '8' },
 
-  return (
-    <SafeAreaView style={styles.container}>
+];
+
+const Points ={points:'8400'}
+
+class Reward extends React.Component {
+  state = { open: false,
+  Points: 8400,
+  };
+
+decrementValue = ()=>{
+  this.setState({Points:this.state.Points - 20})
+}
 
 
-      <ScrollView
-        contentContainerStyle={{
-          flexGrow: 1
-        }}
-        keyboardShouldPersistTaps='handled'>
-      </ScrollView>
-      <View style={styles.titleWrapper}>
-        <ImageBackground style={styles.imageBackground} source={require('../assets/background.jpg')}>
-          <View style={styles.CircleShape}><Text style={{ fontSize: 15, color:'#FFFFFF',textAlign:'center', fontWeight:'600' }}>8400</Text>
-          <Text style={{ fontSize: 10, color:'#FFFFFF',textAlign:'center', fontWeight:'500' }}> points</Text></View>
-            <Text style={{ fontFamily: 'Baskerville', color: '#000814', textAlign: 'center', paddingTop:20,marginLeft:-20, fontSize:20 }}>   Choose your reward !</Text>
-        </ImageBackground>
-      </View>
-      <FlatList
-        numColumns={2}
-        keyExtractor={(item) => item.id}
-        data={rewards}
-        renderItem={({ item }) => (
-          <View style={styles.task}>
-            <Image style={styles.itemImage} source={item.image} />
-            <Text style={styles.item}>{item.name}</Text>
-            <View style={styles.pointsWrapper}><Text style={styles.points}> {item.price} </Text>
-            </View></View>
-        )}
-      />
+  modalDidClose = () => {
+    this.setState({ open: false, useNativeDriver:true});
+  };
+  openModal = () => this.setState({ open: true, useNativeDriver:true });
 
-    </SafeAreaView>
-  );
+  closeModal = () => this.setState({ open: false, useNativeDriver:true });
+
+  render() {
+
+    return (
+      <SafeAreaView style={styles.container}>
+
+
+        <ScrollView
+          contentContainerStyle={{
+            flexGrow: 1
+          }}
+          keyboardShouldPersistTaps='handled'>
+        </ScrollView>
+        <View style={styles.titleWrapper}>
+          <ImageBackground style={styles.imageBackground} source={require('../assets/background.jpg')}>
+            <View style={styles.CircleShape}><Text style={{ fontSize: 15, color: '#FFFFFF', textAlign: 'center', fontWeight: '600' }}>{this.state.Points}</Text>
+              <Text style={{ fontSize: 10, color: '#FFFFFF', textAlign: 'center', fontWeight: '500' }}> points</Text></View>
+            <Text style={{ color: '#000814', textAlign: 'center', paddingTop: 20, marginLeft: -20, fontSize: 20 }}>   Choose your reward !</Text>
+          </ImageBackground>
+        </View>
+        <FlatList
+          numColumns={2}
+          keyExtractor={(item) => item.id}
+          data={Rewards}
+          renderItem={({ item }) => (
+            <View style={styles.task}>
+              <Image style={styles.itemImage} source={item.image} />
+              <Text style={styles.item}>{item.name}</Text>
+              <View style={styles.pointsWrapper}>
+                <TouchableOpacity onPress={this.openModal}>
+                  <Text style={styles.points}> {item.price} points</Text>
+                </TouchableOpacity>
+
+              </View></View>
+          )}
+        />
+        <Modal
+          offset={this.state.offset}
+          open={this.state.open}
+          modalDidOpen={this.UNSAFE_modalDidOpen}
+          modalDidClose={this.UNSAFE_modalDidClose}
+          style={styles.popup}
+        >
+          <View style={{ alignItems: "center" }}>
+            <Text style={{ fontSize: 20, marginBottom: 10, textAlign:'center' }}>Are you sure that you want to buy this reward?</Text>
+            <TouchableOpacity style={{margin: 5}}   onPressIn={this.decrementValue} onPressOut ={this.closeModal}>
+              <Text style={styles.yesno}>{'\u2728'}  Yes  {'\u2728'}</Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity style={{ margin: 5 }} onPress={this.closeModal}>
+              <Text style={styles.yesno}>🙈 No  🙈</Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
+      </SafeAreaView>
+    );
+  }
 }
 
 const width = Dimensions.get('window').width - 40;
@@ -73,7 +116,15 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     resizeMode: 'cover'
   },
-
+popup:
+{
+  alignContent:'center',
+  borderRadius: 15,
+},
+yesno:{
+  color:'#BC4749',
+  fontSize:20
+},
   pointsWrapper:
   {
     height: 20,
@@ -121,7 +172,6 @@ const styles = StyleSheet.create({
 
     //backgroundColor: '#D0D5DC',
     fontSize: 10,
-    fontFamily: 'Baskerville',
     textAlign: 'center',
     fontWeight: '800',
     alignItems: 'center',
@@ -140,7 +190,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
-    marginLeft:-25,
-    marginTop:20
+    marginLeft: -25,
+    marginTop: 20
   },
-});
+}); export default Reward;
