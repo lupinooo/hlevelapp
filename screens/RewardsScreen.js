@@ -1,43 +1,62 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, SafeAreaView, ScrollView, ImageBackground, Image, Dimensions, TouchableOpacity } from 'react-native';
 import Modal from "react-native-simple-modal";
 
+
+
 const Rewards = [
-  { name: 'Unlock 3 tasks from the "Nature" category', image: require('../assets/nature.png'), price:20, id: '1' },
-  { name: 'Buy some vegetables seeds', price: 30, image: require('../assets/sprout.png'), id: '2' },
-  { name: 'Buy a cup with  the "HLevel" logo', price: 45, image: require('../assets/cup.png'), id: '3' },
-  { name: 'Buy the 4ocean Bracelet', price: 85, image: require('../assets/1.png'), id: '4' },
-  { name: 'Buy a T-shirt with the "HLevel" logo', price: 50, image: require('../assets/Imagine.png'), id: '5' },
-  { name: 'Get a free session with a nutritionist', price: 120, image: require('../assets/nutrition.png'), id: '6' },
-  { name: '30% discount on Mega Image', price: 80, image: require('../assets/mega_image.png'), id: '7' },
-  { name: "Donate for children's food from Africa", price: 30, image: require('../assets/food.jpg'), id: '8' },
+  { name: 'Unlock 3 tasks from the "Nature" category', image: require('../assets/nature.png'), price:20, id: 1 },
+  { name: 'Buy some vegetables seeds', price: 30, image: require('../assets/sprout.png'), id: 2 },
+  { name: 'Buy a cup with  the "HLevel" logo', price: 45, image: require('../assets/cup.png'), id: 3 },
+  { name: 'Buy the 4ocean Bracelet', price: 85, image: require('../assets/1.png'), id: 4 },
+  { name: 'Buy a T-shirt with the "HLevel" logo', price: 50, image: require('../assets/Imagine.png'), id: 5 },
+  { name: 'Get a free session with a nutritionist', price: 120, image: require('../assets/nutrition.png'), id: 6 },
+  { name: '30% discount on Mega Image', price: 80, image: require('../assets/mega_image.png'), id: 7 },
+  { name: "Donate for children's food from Africa", price: 30, image: require('../assets/food.jpg'), id: 8 },
 
 ];
 
 const Points ={points:'8400'}
 
 class Reward extends React.Component {
-  state = { open: false,
-  Points: 8400,
-  };
+
+    constructor(props){
+        super(props);
+        this.state = { open: false,
+            Points: 8400,
+            data:Rewards,
+            selectedId:-1
+            };
+    }
+ 
 
 decrementValue = ()=>{
-  this.setState({Points:this.state.Points - 20})
+
+    const rewardPrice=Rewards.find(item=>item.id===this.state.selectedId).price;
+  this.setState({Points:this.state.Points - rewardPrice})
 }
 
 
   modalDidClose = () => {
-    this.setState({ open: false, useNativeDriver:true});
+    this.setState({ open: false});
   };
-  openModal = () => this.setState({ open: true, useNativeDriver:true });
+  async openModal(id)
+  {
+     await this.setState({ open: true, selectedId:id});
+      console.log(this.state.selectedId);
+    };
 
-  closeModal = () => this.setState({ open: false, useNativeDriver:true });
+  closeModal = () => this.setState({ open: false});
+
 
   render() {
 
     return (
+
+
       <SafeAreaView style={styles.container}>
+
 
 
         <ScrollView
@@ -56,13 +75,13 @@ decrementValue = ()=>{
         <FlatList
           numColumns={2}
           keyExtractor={(item) => item.id}
-          data={Rewards}
+          data={this.state.data}
           renderItem={({ item }) => (
             <View style={styles.task}>
               <Image style={styles.itemImage} source={item.image} />
               <Text style={styles.item}>{item.name}</Text>
               <View style={styles.pointsWrapper}>
-                <TouchableOpacity onPress={this.openModal}>
+                <TouchableOpacity onPress={()=>{this.setState({open:true});this.openModal(item.id)}}>
                   <Text style={styles.points}> {item.price} points</Text>
                 </TouchableOpacity>
 
@@ -72,6 +91,7 @@ decrementValue = ()=>{
         <Modal
           offset={this.state.offset}
           open={this.state.open}
+          useNativeDriver
           modalDidOpen={this.UNSAFE_modalDidOpen}
           modalDidClose={this.UNSAFE_modalDidClose}
           style={styles.popup}
@@ -87,7 +107,8 @@ decrementValue = ()=>{
             </TouchableOpacity>
           </View>
         </Modal>
-      </SafeAreaView>
+  
+     </SafeAreaView>
     );
   }
 }
@@ -98,7 +119,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 40,
-    paddingHorizontal: 40,
+    //paddingHorizontal: 8,
     backgroundColor: '#F7FFF6',
     paddingLeft: 40,
     paddingRight: 40,
@@ -151,7 +172,6 @@ yesno:{
     marginHorizontal: 10,
     marginTop: 10,
     borderRadius: 10,
-    //backgroundColor: '#D0D5DC',
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
