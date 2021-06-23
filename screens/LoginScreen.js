@@ -1,13 +1,20 @@
 import React from 'react';
-import { Text, View, TextInput, Image, TouchableOpacity, ScrollView, SafeAreaView} from 'react-native';
+import { Text, View, TextInput, Image, TouchableOpacity, ScrollView, SafeAreaView, Alert} from 'react-native';
 import Icon from '@expo/vector-icons/AntDesign';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
+
+
+const user={email: 'user@gmail.com', password:'123456'}
 
 class Login extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      secureTextEntry: true
+      secureTextEntry: true,
+      userEmail:'',
+      userPass:'',
+      invalidEmail:false,
+      invalidPassword:false
     }
 
   }
@@ -18,11 +25,35 @@ class Login extends React.Component {
     else {this.setState({secureTextEntry:true})}
     }
 
+
+
+  handleLogin(){
+
+    if(this.state.userEmail==''){
+      this.setState({invalidEmail:true})
+      if(this.state.userPass==''){
+        this.setState({invalidPassword:true})
+      }
+    }
+    else{
+
+      if(this.state.userPass===user.password && this.state.userEmail===user.email){
+        this.props.navigation.navigate('App');
+      }
+      else{
+        Alert.alert('Wrong credentials. Try again!')
+      }
+    }
+   
+    
+   
+  }
+
   render () {
 
   return (
     
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor:'#F7FFF6'}}>
     <ScrollView style={{backgroundColor:'#F7FFF6',height:'100%'}}>
   
     <View>
@@ -74,13 +105,19 @@ class Login extends React.Component {
 
              
              <TextInput
+             value={this.state.userEmail}
+             secureTextEntry={false}
+             onChangeText={(text) => this.setState({ userEmail: text, invalidEmail:false })}
               placeholder="email"
               style={{
                 paddingLeft: 10,
               }}
-            />          
+            /> 
+                  
         </View> 
-      
+        {this.state.invalidEmail && <Text  style={{
+             paddingLeft: 60,
+             flex: 1, color: '#BC4749'}}> Please fill in your email!</Text>} 
         <View style={{
           flexDirection:'row',
           alignItems: 'center',
@@ -98,6 +135,8 @@ class Login extends React.Component {
              
             <TextInput
              placeholder="password"
+             value={this.state.userPass}
+             onChangeText={(text) =>this.setState({ userPass: text, invalidPassword:false })}
              secureTextEntry={this.state.secureTextEntry}
              style={{
              paddingLeft: 10,
@@ -122,6 +161,11 @@ class Login extends React.Component {
             </TouchableOpacity>
            
         </View> 
+        {this.state.invalidPassword && <Text  style={{
+             paddingLeft: 60,
+             paddingTop:10,
+             paddingTop:10,
+             flex: 1, color: '#BC4749'}}> Please fill in your password!</Text>} 
         
   {/* Login Button */}
         <View style={{
@@ -132,7 +176,7 @@ class Login extends React.Component {
           backgroundColor: '#2A8D4A',
           paddingVertical: 12,
           borderRadius: 23,
-        }}><TouchableOpacity onPress={()=>this.props.navigation.navigate('App')}>
+        }}><TouchableOpacity onPress={()=>this.handleLogin()}>
             <Text style={{
               color: '#F7FFF6',
               alignSelf: 'center',

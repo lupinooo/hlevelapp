@@ -29,7 +29,7 @@ class Register extends React.Component {
 
   return (
     
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor:'#F7FFF6'}}>
     
     <ScrollView style={{backgroundColor:'#F7FFF6',height:'100%'}}>
   
