@@ -74,6 +74,7 @@ class Login extends React.Component {
             alignSelf: 'center',
             paddingTop: 50,
             color: '#2A8D4A',
+            fontFamily:'Gill Sans'
           }}
         >Welcome Back!</Text>
         
@@ -85,6 +86,7 @@ class Login extends React.Component {
           marginTop: 2,
           opacity: 0.8,
           color: '#46505D',
+          fontFamily:'GillSans-Light'
         }}
         >Sign in to your account</Text>
 
@@ -111,12 +113,14 @@ class Login extends React.Component {
               placeholder="email"
               style={{
                 paddingLeft: 10,
+              fontFamily:'Gill Sans'
               }}
             /> 
                   
         </View> 
         {this.state.invalidEmail && <Text  style={{
              paddingLeft: 60,
+             fontFamily:'Gill Sans',
              flex: 1, color: '#BC4749'}}> Please fill in your email!</Text>} 
         <View style={{
           flexDirection:'row',
@@ -140,7 +144,8 @@ class Login extends React.Component {
              secureTextEntry={this.state.secureTextEntry}
              style={{
              paddingLeft: 10,
-             flex: 1
+             flex: 1,
+             fontFamily:'Gill Sans'
                    }}
             />
             <TouchableOpacity 
@@ -163,8 +168,7 @@ class Login extends React.Component {
         </View> 
         {this.state.invalidPassword && <Text  style={{
              paddingLeft: 60,
-             paddingTop:10,
-             paddingTop:10,
+             fontFamily:'Gill Sans',
              flex: 1, color: '#BC4749'}}> Please fill in your password!</Text>} 
         
   {/* Login Button */}
@@ -181,6 +185,7 @@ class Login extends React.Component {
               color: '#F7FFF6',
               alignSelf: 'center',
               fontSize: 17,
+              fontFamily:'Gill Sans'
             }}
             >Login</Text></TouchableOpacity>
         </View>
@@ -195,6 +200,7 @@ class Login extends React.Component {
               fontSize: 13,
               marginTop: 95,
               opacity: 0.8,
+              fontFamily:'GillSans-Light'
               }}
               >Not registered yet?</Text>
             </View>
@@ -216,6 +222,7 @@ class Login extends React.Component {
               color: '#2A8D4A',
               alignSelf: 'center',
               fontSize: 15,
+              fontFamily:'Gill Sans'
             }}
             >Create an account</Text>
             </TouchableOpacity>

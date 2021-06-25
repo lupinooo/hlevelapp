@@ -2,6 +2,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, SafeAreaView, ScrollView, ImageBackground, Image, Dimensions, TouchableOpacity } from 'react-native';
 import Modal from "react-native-simple-modal";
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 
 
@@ -34,7 +35,7 @@ class Reward extends React.Component {
 decrementValue = ()=>{
 
     const rewardPrice=Rewards.find(item=>item.id===this.state.selectedId).price;
-  this.setState({Points:this.state.Points - rewardPrice})
+  this.setState({Points:this.state.Points - rewardPrice})     
 }
 
 
@@ -67,9 +68,9 @@ decrementValue = ()=>{
         </ScrollView>
         <View style={styles.titleWrapper}>
           <ImageBackground style={styles.imageBackground} source={require('../assets/background.jpg')}>
-            <View style={styles.CircleShape}><Text style={{ fontSize: 15, color: '#FFFFFF', textAlign: 'center', fontWeight: '600' }}>{this.state.Points}</Text>
-              <Text style={{ fontSize: 10, color: '#FFFFFF', textAlign: 'center', fontWeight: '500' }}> points</Text></View>
-            <Text style={{ color: '#000814', textAlign: 'center', paddingTop: 20, marginLeft: -20, fontSize: 20 }}>   Choose your reward !</Text>
+            <View style={styles.CircleShape}><Text style={{ fontSize: 20, color: '#FFFFFF', textAlign: 'center', fontWeight: '600',  fontFamily:'Gill Sans' }}>{this.state.Points}</Text>
+              <Text style={{ fontSize: 11, color: '#FFFFFF', textAlign: 'center', fontWeight: '500',  fontFamily:'Gill Sans' }}> points</Text></View>
+            <Text style={{ color: '#000814', textAlign: 'center', paddingTop: 20, marginLeft: -20, fontSize: 20,  fontFamily:'Gill Sans' }}>   Choose your reward !</Text>
           </ImageBackground>
         </View>
         <FlatList
@@ -97,7 +98,7 @@ decrementValue = ()=>{
           style={styles.popup}
         >
           <View style={{ alignItems: "center" }}>
-            <Text style={{ fontSize: 20, marginBottom: 10, textAlign:'center' }}>Are you sure that you want to buy this reward?</Text>
+            <Text style={{ fontSize: 20, marginBottom: 10, textAlign:'center',  fontFamily:'Gill Sans' }}>Are you sure that you want to buy this reward?</Text>
             <TouchableOpacity style={{margin: 5}}   onPressIn={this.decrementValue} onPressOut ={this.closeModal}>
               <Text style={styles.yesno}>{'\u2728'}  Yes  {'\u2728'}</Text>
             </TouchableOpacity>
@@ -123,11 +124,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#F7FFF6',
     paddingLeft: 40,
     paddingRight: 40,
+   
   },
   points: {
     color: '#9a031e',
-    fontSize: 7,
-    fontWeight: '500'
+    fontSize: 10,
+    fontWeight: '500',
+    fontFamily:'Gill Sans'
 
   },
   imageBackground:
@@ -144,7 +147,8 @@ popup:
 },
 yesno:{
   color:'#BC4749',
-  fontSize:20
+  fontSize:20,
+  fontFamily:'Gill Sans'
 },
   pointsWrapper:
   {
@@ -193,7 +197,8 @@ yesno:{
     //backgroundColor: '#D0D5DC',
     fontSize: 10,
     textAlign: 'center',
-    fontWeight: '800',
+    //fontWeight: '800',
+    fontFamily:'GillSans-Bold',
     alignItems: 'center',
     width: width / 2,
   },

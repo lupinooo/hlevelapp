@@ -51,6 +51,7 @@ class Register extends React.Component {
             alignSelf: 'center',
             paddingTop: 25,
             color: '#2A8D4A',
+            fontFamily:'Gill Sans'
           }}
         >Create an account</Text>
         
@@ -73,6 +74,7 @@ class Register extends React.Component {
               placeholder="full name"
               style={{
                 paddingLeft: 10,
+                fontFamily:'Gill Sans'
               }}
             />          
         </View> 
@@ -96,6 +98,7 @@ class Register extends React.Component {
               placeholder="phone number"
               style={{
                 paddingLeft: 10,
+                fontFamily:'Gill Sans'
               }}
             />          
         </View> 
@@ -119,6 +122,7 @@ class Register extends React.Component {
               placeholder="country"
               style={{
                 paddingLeft: 10,
+                fontFamily:'Gill Sans'
               }}
             />          
         </View> 
@@ -142,6 +146,7 @@ class Register extends React.Component {
               placeholder="email"
               style={{
                 paddingLeft: 10,
+                fontFamily:'Gill Sans'
               }}
             />          
         </View> 
@@ -166,7 +171,8 @@ class Register extends React.Component {
              secureTextEntry={this.state.secure}
              style={{
               paddingLeft: 10,
-              flex: 1
+              flex: 1,
+              fontFamily:'Gill Sans'
              }}
             />
            
@@ -209,7 +215,8 @@ class Register extends React.Component {
              secureTextEntry={this.state.secureTextEntry}
              style={{
               paddingLeft: 10,
-              flex: 1
+              flex: 1,
+              fontFamily:'Gill Sans'
              }}
             />
            
@@ -246,6 +253,7 @@ class Register extends React.Component {
               color: '#F7FFF6',
               alignSelf: 'center',
               fontSize: 17,
+              fontFamily:'Gill Sans'
             }}
             >Register</Text>
         </View>
@@ -259,6 +267,7 @@ class Register extends React.Component {
               fontSize: 13,
               marginTop: 30,
               opacity: 0.8,
+              fontFamily:'GillSans-Light'
               }}
               >Already have an account?</Text>
             </View>
@@ -278,6 +287,7 @@ class Register extends React.Component {
               color: '#2A8D4A',
               alignSelf: 'center',
               fontSize: 15,
+              fontFamily:'Gill Sans'
             }}
             >Login</Text>
             </TouchableOpacity>
