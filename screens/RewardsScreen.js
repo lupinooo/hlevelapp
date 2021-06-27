@@ -2,7 +2,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, SafeAreaView, ScrollView, ImageBackground, Image, Dimensions, TouchableOpacity } from 'react-native';
 import Modal from "react-native-simple-modal";
-import AsyncStorage from "@react-native-async-storage/async-storage"
+{/*import AsyncStorage from "@react-native-async-storage/async-storage"*/}
 
 
 

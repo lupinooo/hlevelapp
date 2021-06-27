@@ -10,7 +10,7 @@ import {
 } from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+{/*import AsyncStorage from '@react-native-async-storage/async-storage';*/}
 
 
 class Profile extends React.Component{
