@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text, TextInput, View, Image, TouchableOpacity,StyleSheet, ScrollView, SafeAreaView} from 'react-native';
-
+import Category from './Explore/Category';
+import PropTypes from 'prop-types';
 import React from 'react';
 import {
   Avatar,
@@ -8,20 +9,8 @@ import {
   Caption,
   TouchableRipple,
 } from 'react-native-paper';
-
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-{/*import AsyncStorage from '@react-native-async-storage/async-storage';*/}
-
-
-class Profile extends React.Component{
-
-    constructor(props){
-        super(props);
-    }
-
- 
-
-    render(){
+import imag from 'C:\Users\diana\hlevelapp\assets\food.png';
+const ProfileScreen = () => {
 return(
 <SafeAreaView style={styles.container}>
 
@@ -37,7 +26,6 @@ return(
       <Title style={[styles.title, {
         marginTop:15,
         marginBottom: 5,
-        fontFamily:'Gill Sans'
       }]}>User Name</Title>
       <Caption style={styles.caption}>@user_name</Caption>
     </View>
@@ -47,29 +35,29 @@ return(
 <View style={styles.userInfoSection}>
   <View style={styles.row}>
     <Icon name="map-marker-radius" color="#87D68D" size={20}/>
-    <Text style={{color:"#777777", marginLeft: 20, fontFamily:'GillSans-Light'}}>Bucharest, Romania</Text>
+    <Text style={{color:"#777777", marginLeft: 20}}>Bucharest,Romania</Text>
   </View>
   <View style={styles.row}>
     <Icon name="phone" color="#87D68D" size={20}/>
-    <Text style={{color:"#777777", marginLeft: 20, fontFamily:'GillSans-Light'}}>0712345678</Text>
+    <Text style={{color:"#777777", marginLeft: 20}}>0712345678</Text>
   </View>
   <View style={styles.row}>
     <Icon name="email" color="#87D68D" size={20}/>
-    <Text style={{color:"#777777", marginLeft: 20, fontFamily:'GillSans-Light'}}>user@email.com</Text>
+    <Text style={{color:"#777777", marginLeft: 20}}>user@email.com</Text>
   </View>
 </View>
 
 <View style={styles.infoBoxWrapper}>
     <View style={[styles.infoBox, {
       borderRightColor: '#87D68D',
-      borderRightWidth: 1,
+      borderRightWidth: 1
     }]}>
-      <Title style={{fontFamily:'Gill Sans'}}>140</Title>
-      <Caption style={{fontFamily:'Gill Sans'}}>Score</Caption>
+      <Title>140</Title>
+      <Caption>Score</Caption>
     </View>
     <View style={styles.infoBox}>
-      <Title style={{fontFamily:'Gill Sans'}}>12</Title>
-      <Caption style={{fontFamily:'Gill Sans'}}>Place in Leaderboard</Caption>
+      <Title>12</Title>
+      <Caption>Place in Leaderboard</Caption>
     </View>
 </View>
 
@@ -105,10 +93,29 @@ return(
     </View>
   </TouchableRipple>
 </View>
+<View style={{ flex: 1, backgroundColor: 'white'}}>
+                                          <View style={{ height: 130, marginTop: 20 }}>
+                                <ScrollView
+                                    horizontal={true}
+                                    showsHorizontalScrollIndicator={false}
+                                >
+                                    <Category  imageUri={imag}
+                                        name="Task1"
+                                    />
+                                    <Category  imageUri={imag}
+                                        name="Task2"
+                                    />
+                                    <Category imageUri={imag}
+                                        name="Task3"
+                                    />
+                                </ScrollView>
+                            </View>
+                            </View>
+   
 </SafeAreaView>
 );
-};}
-export default Profile;
+};
+export default ProfileScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -121,11 +128,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
+    fontWeight: 'bold',
   },
   caption: {
     fontSize: 14,
     lineHeight: 14,
-    fontFamily:'Gill Sans',
     fontWeight: '500',
   },
   row: {
@@ -159,6 +166,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 16,
     lineHeight: 26,
-   fontFamily:'Gill Sans'
   },
 });
