@@ -7,13 +7,19 @@ import {
   Avatar,
   Title,
   Caption,
+ 
   TouchableRipple,
 } from 'react-native-paper';
-import imag from 'C:\Users\diana\hlevelapp\assets\food.png';
-const ProfileScreen = () => {
+import imag from '../assets/yoga.png';
+import imag2 from '../assets/1.png'
+import imag3 from '../assets/sprout.png'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+class ProfileScreen extends React.Component{
+  render(){
 return(
 <SafeAreaView style={styles.container}>
-
+<ScrollView>
 <View style={styles.userInfoSection}>
   <View style={{flexDirection: 'row', marginTop: 15}}>
     <Avatar.Image 
@@ -62,58 +68,85 @@ return(
 </View>
 
 <View style={styles.menuWrapper}>
-  <TouchableRipple onPress={() => {}}>
+  <TouchableRipple >
     <View style={styles.menuItem}>
       <Icon name="order-bool-descending-variant" color="#87D68D" size={25}/>
       <Text style={styles.menuItemText}>My Challenges</Text>
     </View>
   </TouchableRipple>
-  <TouchableRipple onPress={() => {}}>
+  {/* <TouchableRipple >
     <View style={styles.menuItem}>
-      <Icon name="trending-up" color="#87D68D" size={25}/>
-      <Text style={styles.menuItemText}>My Progress</Text>
-    </View>
-  </TouchableRipple>
-  {/* <TouchableRipple onPress={myCustomShare}>
-    <View style={styles.menuItem}>
-      <Icon name="share-outline" color="#FF6347" size={25}/>
-      <Text style={styles.menuItemText}>Tell Your Friends</Text>
+      <Icon name="seal-variant" color="#87D68D" size={25}/>
+      <Text style={styles.menuItemText}>My Tasks</Text>
     </View>
   </TouchableRipple> */}
-  <TouchableRipple onPress={() => {}}>
+   <TouchableRipple >
     <View style={styles.menuItem}>
-      <Icon name="account-check-outline" color="#87D68D" size={25}/>
-      <Text style={styles.menuItemText}>Edit Profile</Text>
+      <Icon name="sprout" color="#87D68D" size={25}/>
+      <Text style={styles.menuItemText}>My Tasks</Text>
     </View>
+
   </TouchableRipple>
-  <TouchableRipple onPress={() => {}}>
-    <View style={styles.menuItem}>
-      <Icon name="vanish" color="#87D68D" size={25}/>
-      <Text style={styles.menuItemText}>Settings</Text>
-    </View>
-  </TouchableRipple>
-</View>
-<View style={{ flex: 1, backgroundColor: 'white'}}>
-                                          <View style={{ height: 130, marginTop: 20 }}>
+  <View style={{ backgroundColor: '#F7FFF6'}}>
+                                          <View style={{ height: 130, marginTop: 10,marginBottom:10 }}>
                                 <ScrollView
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
                                     <Category  imageUri={imag}
-                                        name="Task1"
+                                        name="Run 5 km"
                                     />
-                                    <Category  imageUri={imag}
-                                        name="Task2"
+                                    <Category  imageUri={imag2}
+                                        name="Plant a tree"
                                     />
-                                    <Category imageUri={imag}
-                                        name="Task3"
+                                    <Category imageUri={imag3}
+                                        name="Zero-waste day"
+                                    />
+                                      <Category imageUri={imag3}
+                                        name="Donate to a local animal shelter"
                                     />
                                 </ScrollView>
                             </View>
                             </View>
-   
+   <TouchableRipple >
+    <View style={styles.menuItem}>
+      <Icon name="seal-variant" color="#87D68D" size={25}/>
+      <Text style={styles.menuItemText}>My Rewards</Text>
+
+    </View>
+
+  </TouchableRipple> 
+  <View style={{ backgroundColor: '#F7FFF6'}}>
+                                          <View style={{ height: 130, marginTop: 10 }}>
+                                <ScrollView
+                                    horizontal={true}
+                                    showsHorizontalScrollIndicator={false}
+                                >
+                                    <Category  imageUri={imag}
+                                        name="Free yoga session"
+                                    />
+                                    <Category  imageUri={imag2}
+                                        name="4ocean bracelet"
+                                    />
+                                    <Category imageUri={imag3}
+                                        name="Vegetable seeds"
+                                    />
+                                </ScrollView>
+                            </View>
+                            </View>
+
+  <TouchableRipple >
+    <View style={styles.menuItem}>
+      <Icon name="account-check-outline" color="#87D68D" size={25}/>
+      <Text style={styles.menuItemText}>Edit Profile</Text>
+    </View>
+
+  </TouchableRipple>
+</View>
+
+</ScrollView>
 </SafeAreaView>
-);
+);}
 };
 export default ProfileScreen;
 
