@@ -9,14 +9,20 @@ import {
 class Category extends Component {
     render() {
         return (
-            <View style={{ height: 130, width: 130, marginLeft: 20, borderWidth: 0.5, borderColor: '#dddddd' }}>
+            <View style={{ height: 130, width: 130, marginLeft: 20, borderWidth: 0.5, borderColor: '#dddddd',borderRadius: 10,
+            backgroundColor: '#FFFFFF',
+            shadowColor: '#000000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.5,
+            shadowRadius: 2,
+            elevation: 2, }}>
                 <View style={{ flex: 2 }}>
                     <Image source={this.props.imageUri}
-                        style={{ flex: 1, width: 100, height: 100, resizeMode: 'cover' ,alignSelf:'center'}}
+                        style={{ flex: 1, width: 80, height: 80, resizeMode: 'cover' ,alignSelf:'center'}}
                     />
                 </View>
-                <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10,alignItems:'center' }}>
-                    <Text>{this.props.name}</Text>
+                <View style={{ flex: 1, paddingLeft:10 ,fontFamily:"Gill Sans",alignItems:'center' }}>
+                    <Text style={{fontFamily:"Gill Sans"}}>{this.props.name}</Text>
                 </View>
             </View>
         );
@@ -26,7 +32,7 @@ export default Category;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1,fontFamily:"Gill Sans",
         alignItems: 'center',
         justifyContent: 'center'
     }

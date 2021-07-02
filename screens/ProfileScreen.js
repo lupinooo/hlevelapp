@@ -10,9 +10,13 @@ import {
  
   TouchableRipple,
 } from 'react-native-paper';
-import imag from '../assets/yoga.png';
-import imag2 from '../assets/1.png'
-import imag3 from '../assets/sprout.png'
+import imag from '../assets/task4.png';
+import imag2 from '../assets/task2.png'
+import imag3 from '../assets/task5.png';
+import imag4 from '../assets/task3.png';
+import bratara from '../assets/1.png';
+import seminte from '../assets/sprout.png';
+import yoga from '../assets/yoga.png';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 class ProfileScreen extends React.Component{
@@ -24,14 +28,14 @@ return(
   <View style={{flexDirection: 'row', marginTop: 15}}>
     <Avatar.Image 
       source={{
-        uri: 'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
+        uri: 'https://image.flaticon.com/icons/png/512/4322/4322993.png',
       }}
       size={80}
     />
     <View style={{marginLeft: 20}}>
       <Title style={[styles.title, {
         marginTop:15,
-        marginBottom: 5,
+        marginBottom: 5,fontFamily:"Gill Sans",
       }]}>User Name</Title>
       <Caption style={styles.caption}>@user_name</Caption>
     </View>
@@ -41,22 +45,22 @@ return(
 <View style={styles.userInfoSection}>
   <View style={styles.row}>
     <Icon name="map-marker-radius" color="#87D68D" size={20}/>
-    <Text style={{color:"#777777", marginLeft: 20}}>Bucharest,Romania</Text>
+    <Text style={{color:"#777777",fontFamily:"Gill Sans", marginLeft: 20}}>Bucharest,Romania</Text>
   </View>
   <View style={styles.row}>
     <Icon name="phone" color="#87D68D" size={20}/>
-    <Text style={{color:"#777777", marginLeft: 20}}>0712345678</Text>
+    <Text style={{color:"#777777",fontFamily:"Gill Sans", marginLeft: 20}}>0712345678</Text>
   </View>
   <View style={styles.row}>
     <Icon name="email" color="#87D68D" size={20}/>
-    <Text style={{color:"#777777", marginLeft: 20}}>user@email.com</Text>
+    <Text style={{color:"#777777",fontFamily:"Gill Sans", marginLeft: 20}}>user@email.com</Text>
   </View>
 </View>
 
 <View style={styles.infoBoxWrapper}>
     <View style={[styles.infoBox, {
       borderRightColor: '#87D68D',
-      borderRightWidth: 1
+      borderRightWidth: 1,fontFamily:"Gill Sans",
     }]}>
       <Title>140</Title>
       <Caption>Score</Caption>
@@ -88,7 +92,7 @@ return(
 
   </TouchableRipple>
   <View style={{ backgroundColor: '#F7FFF6'}}>
-                                          <View style={{ height: 130, marginTop: 10,marginBottom:10 }}>
+                                          <View style={{fontFamily:"Gill Sans", height: 130, marginTop: 10,marginBottom:10 }}>
                                 <ScrollView
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
@@ -102,7 +106,7 @@ return(
                                     <Category imageUri={imag3}
                                         name="Zero-waste day"
                                     />
-                                      <Category imageUri={imag3}
+                                      <Category imageUri={imag4}
                                         name="Donate to a local animal shelter"
                                     />
                                 </ScrollView>
@@ -116,19 +120,19 @@ return(
     </View>
 
   </TouchableRipple> 
-  <View style={{ backgroundColor: '#F7FFF6'}}>
+  <View style={{ backgroundColor: '#F7FFF6',fontFamily:"Gill Sans"}}>
                                           <View style={{ height: 130, marginTop: 10 }}>
                                 <ScrollView
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    <Category  imageUri={imag}
+                                    <Category  imageUri={yoga}
                                         name="Free yoga session"
                                     />
-                                    <Category  imageUri={imag2}
+                                    <Category  imageUri={bratara}
                                         name="4ocean bracelet"
                                     />
-                                    <Category imageUri={imag3}
+                                    <Category imageUri={seminte}
                                         name="Vegetable seeds"
                                     />
                                 </ScrollView>
@@ -151,28 +155,28 @@ return(
 export default ProfileScreen;
 
 const styles = StyleSheet.create({
-  container: {
+  container: {fontFamily:"Gill Sans",
     flex: 1,
       backgroundColor :'#F7FFF6',
   },
-  userInfoSection: {
+  userInfoSection: {fontFamily:"Gill Sans",
     paddingHorizontal: 30,
     marginBottom: 25,
   },
-  title: {
+  title: {fontFamily:"Gill Sans",
     fontSize: 24,
     fontWeight: 'bold',
   },
-  caption: {
+  caption: {fontFamily:"Gill Sans",
     fontSize: 14,
     lineHeight: 14,
     fontWeight: '500',
   },
-  row: {
+  row: {fontFamily:"Gill Sans",
     flexDirection: 'row',
     marginBottom: 10,
   },
-  infoBoxWrapper: {
+  infoBoxWrapper: {fontFamily:"Gill Sans",
     borderBottomColor: '#87D68D',
     borderBottomWidth: 1,
     borderTopColor: '#87D68D',
@@ -180,20 +184,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 100,
   },
-  infoBox: {
+  infoBox: {fontFamily:"Gill Sans",
     width: '50%',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  menuWrapper: {
+  menuWrapper: {fontFamily:"Gill Sans",
     marginTop: 10,
   },
-  menuItem: {
+  menuItem: {fontFamily:"Gill Sans",
     flexDirection: 'row',
     paddingVertical: 15,
     paddingHorizontal: 30,
   },
-  menuItemText: {
+  menuItemText: {fontFamily:"Gill Sans",
     color: '#777777',
     marginLeft: 20,
     fontWeight: '600',
