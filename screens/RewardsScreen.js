@@ -7,14 +7,14 @@ import Modal from "react-native-simple-modal";
 
 
 const Rewards = [
-  { name: "Get a coupon for your local farmer's market", image: require('../assets/market.png'), price:20, id: 1 },
-  { name: 'Buy some vegetables seeds', price: 30, image: require('../assets/sprout.png'), id: 2 },
-  { name: 'Buy a cup with  the "HLevel" logo', price: 45, image: require('../assets/cup.png'), id: 3 },
-  { name: 'Buy the 4ocean Bracelet', price: 85, image: require('../assets/1.png'), id: 4 },
-  { name: 'Buy a T-shirt with the "HLevel" logo', price: 50, image: require('../assets/Imagine.png'), id: 5 },
-  { name: 'Get a free session with a nutritionist', price: 120, image: require('../assets/nutrition.png'), id: 6 },
-  { name: 'Get a 30% discount on Mega Image', price: 80, image: require('../assets/mega_image.png'), id: 7 },
-  { name: "Get a free yoga session", price: 30, image: require('../assets/yoga.png'), id: 8 },
+  { name: "Get a coupon for your local farmer's market", image: require('../assets/market.png'), price:200, id: 1 },
+  { name: 'Buy some vegetables seeds', price: 300, image: require('../assets/sprout.png'), id: 2 },
+  { name: 'Buy a cup with  the "HLevel" logo', price: 450, image: require('../assets/cup.png'), id: 3 },
+  { name: 'Buy the 4ocean Bracelet', price: 850, image: require('../assets/1.png'), id: 4 },
+  { name: 'Buy a T-shirt with the "HLevel" logo', price: 500, image: require('../assets/Imagine.png'), id: 5 },
+  { name: 'Get a free session with a nutritionist', price: 1200, image: require('../assets/nutrition.png'), id: 6 },
+  { name: 'Get a 30% discount on Mega Image', price: 200, image: require('../assets/mega_image.png'), id: 7 },
+  { name: "Get a free yoga session", price: 700, image: require('../assets/yoga.png'), id: 8 },
 
 ];
 
@@ -153,7 +153,7 @@ yesno:{
   pointsWrapper:
   {
     height: 20,
-    width: 50,
+    width: 60,
     backgroundColor: '#BCEBCD',
     borderRadius: 15,
     alignContent: 'center',
