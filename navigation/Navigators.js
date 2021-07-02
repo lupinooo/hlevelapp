@@ -11,6 +11,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import LeaderBoardScreen from '../screens/LeaderboardScreen';
 import TasksScreen from '../screens/TasksScreen';
 import RewardsScreen from '../screens/RewardsScreen';
+import SplashScreen from '../screens/SplashScreen'
 
 const Stack=createStackNavigator();
 const Tab=createBottomTabNavigator();
@@ -20,6 +21,9 @@ const MainStackNavigator = () => {
         <Stack.Navigator screenOptions={{
             headerShown: false
           }}>
+            <Stack.Screen
+            name="Splash"
+            component={SplashScreen}/>
          <Stack.Screen
            name="Login"
            component={LoginScreen}
@@ -63,7 +67,10 @@ const SecondNavigator=()=>{
           })}
           tabBarOptions={{
             activeTintColor: '#BC4749',
-            inactiveTintColor: '#8491A3',
+            inactiveTintColor: '#87D68D',
+            style: {
+              backgroundColor: '#F7FFF6',
+              }
           }}
         >
           <Tab.Screen

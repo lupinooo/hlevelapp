@@ -54,7 +54,7 @@ class Leaderboard extends React.Component {
           <ImageBackground style={styles.imageBackground} source={require('../assets/verde.png')}>
             <View ><Text style={{ fontSize: 35, color: '#FFFFFF', textAlign: 'center', justifyContent: 'centre', marginTop: 30, fontWeight: '600',  fontFamily:'Gill Sans' }}>LeaderBoard</Text>
               </View>
-            <Text style={{ color: '#000814', textAlign: 'center', paddingTop: 10, marginLeft: -20, fontSize: 20,  fontFamily:'Gill Sans' }}> 🎈  Be your own hero today! 🎈</Text>
+            <Text style={{ color: '#000814', textAlign: 'center', paddingTop: 5, textAlign:'center',  fontFamily:'Gill Sans' }}> 🎈  Be your own hero today! 🎈</Text>
           </ImageBackground>
         </View>
         <FlatList
@@ -142,8 +142,8 @@ const styles = StyleSheet.create({
   },
   titleWrapper: {
     overflow: 'hidden',
-    height: 150,
-    width: 400
+    height: 130,
+   // width: 400
   },
   task:
   {
