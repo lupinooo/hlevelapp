@@ -70,7 +70,7 @@ decrementValue = ()=>{
           <ImageBackground style={styles.imageBackground} source={require('../assets/background.jpg')}>
             <View style={styles.CircleShape}><Text style={{ fontSize: 20, color: '#FFFFFF', textAlign: 'center', fontWeight: '600',  fontFamily:'Gill Sans' }}>{this.state.Points}</Text>
               <Text style={{ fontSize: 11, color: '#FFFFFF', textAlign: 'center', fontWeight: '500',  fontFamily:'Gill Sans' }}> points</Text></View>
-            <Text style={{ color: '#000814', textAlign: 'center', paddingTop: 20, marginLeft: -20, fontSize: 20,  fontFamily:'Gill Sans' }}>   Choose your reward !</Text>
+            <Text style={{ color: '#000814', textAlign: 'center', paddingTop: 20, marginLeft: -20, fontSize: 20,  fontFamily:'Gill Sans' }}>  🎉 Choose your reward ! 🎉</Text>
           </ImageBackground>
         </View>
         <FlatList
