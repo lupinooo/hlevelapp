@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, FlatList, TouchableOpacity, Modal, Animated,Pressable, Alert, TextInput } from 'react-native';
+import React, {useState,e, useEffect} from 'react';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, FlatList, TouchableOpacity, Modal, Animated,Pressable, Alert, TextInput, Button, Platform } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
 const task = [
   { name: 'Volunteer for a local NGO!', shortDescription: 'Volunteer as an English teacher for foster children and help your local community.', points: 1500,image:require('../assets/task0.jpg'), id: 1 },
@@ -53,9 +54,36 @@ function Item({ item }) {
   const [visible, setVisible] = React.useState(false);
   const [modalVisible, setModalVisible] = React.useState(false);
   const [selectedId, setSelectedId] = React.useState(0);
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== 'web') {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+          alert('Sorry, we need camera roll permissions to make this work!');
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
 
   return (
     <View style={styles.task}>
+      
       <View style={{alignItems:'center', flex:1.5}}><Image source={item.image}  style={{width:60, height:60,borderRadius:10, marginTop:10, marginLeft:10,marginRight: 10,justifyContent:'center', alignContent:'center'}} /></View>
       <View style={{alignItems:"center",flex:3}}>
         <Text style={{fontWeight:"bold", fontSize:16, marginTop:20,fontFamily:'Gill Sans', justifyContent:'center', alignContent:'center', textAlign:'center'}}>{item.name}</Text>
@@ -75,7 +103,9 @@ function Item({ item }) {
         <Text style={{marginVertical: 30, fontSize: 20, textAlign: 'center',fontFamily:'Gill Sans'}}>
          {item.shortDescription}
         </Text>
-        <TextInput placeholder="Write about your experience!" style={{height:150, width:250, backgroundColor:'#BCEBCB', alignSelf:'center', borderRadius:20, paddingLeft:10, marginBottom:10}} />
+        <TextInput placeholder="Write about your experience!" style={{height:150, width:250, backgroundColor:'#BCEBCB', alignSelf:'center', borderRadius:20, paddingLeft:10, marginBottom:10, color:'white'}} />
+        <Pressable onPress={pickImage}><Image source={require('../assets/camera.png')} style={{width: 40, height:40, alignSelf:'center'}}/></Pressable>
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
         <View style={{flexDirection:'row'}}>
         <View style={styles.Close}>
           <Pressable onPress={()=> setVisible(false)}>
